@@ -8,8 +8,44 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
 
 ```{r}
-plot(cars)
+library(ggplot2)
+library(gridExtra)
+library(grid)
+library(ggplot2)
+library(lattice)
+
 ```
+
+```{r}
+df_cms <- read.csv("./datasets/df_cms.csv")
+head(df_cms)
+```
+
+```{r}
+df_null <- df_cms[is.na(df_cms$Census.Region),]
+
+head(df_null)
+```
+
+
+```{r}
+cr_ncr_p1 <- ggplot(data=df_cms,aes(x=df_cms$Census.Region)) +
+  geom_histogram(stat = "count")
+
+cr_ncrd_p1 <- ggplot(data=df_cms,aes(x=df_cms$Census.Region.Division)) +
+  geom_histogram(stat = "count")
+
+cr_nfr_p1 <- ggplot(data=df_cms,aes(x=df_cms$Federal.Region)) +
+  geom_histogram(stat = "count")
+
+cr_near_p1 <- ggplot(data=df_cms,aes(x=df_cms$Economic.Analysis.Region)) +
+  geom_histogram(stat = "count")
+
+grid.arrange(cr_ncr_p1,cr_ncrd_p1,cr_nfr_p1,cr_near_p1, cols=2)
+
+```
+
+
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
 
