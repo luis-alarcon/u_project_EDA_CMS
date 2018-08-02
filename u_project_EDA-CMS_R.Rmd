@@ -27,22 +27,35 @@ df_null <- df_cms[is.na(df_cms$Census.Region),]
 head(df_null)
 ```
 
+```{r echo=FALSE, Bivariate_Plots,fig.width=12,fig.height=7}
+p1 = ggplot(df_cms) + geom_histogram(aes(x = Census.Region, fill = Census.Region), stat = "count") + 
+  ggtitle("Number of CMS per Census Region.")+
+  scale_x_discrete(breaks = 1:4, labels=c("MIDWEST","NORTHEAST","SOUTH","WEST")) +
+  xlab(NULL)
+
+p2 = ggplot(df_cms) + geom_histogram(aes(x = Census.Region.Division, fill = Census.Region.Division), stat = "count") + 
+  ggtitle("Number of CMS per Census Region Division.") +
+  scale_x_discrete(breaks = 1:9, labels=c("D1","D2","D3","D4","D5","D6","D7","D8","D9")) +
+  xlab(NULL)
+
+p3 = ggplot(df_cms) + geom_histogram(aes(x = Federal.Region, fill = Federal.Region), stat = "count") + 
+  ggtitle("Number of CMS per Federal Bank Region.")+
+  scale_x_discrete(breaks = 1:9, labels=c("REGION_I","REGION_II","REGION_III",
+                                          "REGION_IV","REGION_V","REGION_VI","REGION_VII",
+                                          "REGION_VIII","REGION_X")) +
+  xlab(NULL)
+
+p4 = ggplot(df_cms) + geom_histogram(aes(x = Economic.Analysis.Region, fill = Economic.Analysis.Region), stat = "count") + 
+  ggtitle("Number of CMS per Bureu of Economic Analysis Region.")+
+  scale_x_discrete(breaks = 1:8, labels=c("D1","D2","D3","D4","D5","D6","D7","D8")) +
+  xlab(NULL)
+
+grid.arrange(p1, p2, p3, p4, ncol=2)
+```
+
 
 ```{r}
-cr_ncr_p1 <- ggplot(data=df_cms,aes(x=df_cms$Census.Region)) +
-  geom_histogram(stat = "count")
-
-cr_ncrd_p1 <- ggplot(data=df_cms,aes(x=df_cms$Census.Region.Division)) +
-  geom_histogram(stat = "count")
-
-cr_nfr_p1 <- ggplot(data=df_cms,aes(x=df_cms$Federal.Region)) +
-  geom_histogram(stat = "count")
-
-cr_near_p1 <- ggplot(data=df_cms,aes(x=df_cms$Economic.Analysis.Region)) +
-  geom_histogram(stat = "count")
-
-grid.arrange(cr_ncr_p1,cr_ncrd_p1,cr_nfr_p1,cr_near_p1, cols=2)
-
+by(df_cms$Total.Discharges, df_cms$Census.Region, summary)
 ```
 
 
