@@ -63,7 +63,6 @@ By Luis Alarcon
 # Exploratory Data Analysis (EDA)
 
 ## EDA: Initial Data Exploration
-
 ### Data Summary
 
 <p>Firstly, we load the packages that we are going to use in this project.</p>
@@ -108,7 +107,7 @@ summary(df_cms)
 
 <p>This graph contains the number of entry per each of the groups mentioned above.</p>
 
-```{r echo=FALSE, Bivariate_Plots,fig.width=12,fig.height=7}
+```{r echo=FALSE, Bivariate_Plots,fig.width=13,fig.height=10}
 p1 = ggplot(df_cms) + geom_histogram(aes(x = Census.Region, fill = Census.Region), stat = "count") + 
   ggtitle("Number of CMS per Census Region.")+
   scale_x_discrete(breaks = 1:4, labels=c("MIDWEST","NORTHEAST","SOUTH","WEST")) +
@@ -131,10 +130,25 @@ p4 = ggplot(df_cms) + geom_histogram(aes(x = Economic.Analysis.Region, fill = Ec
   scale_x_discrete(breaks = 1:8, labels=c("D1","D2","D3","D4","D5","D6","D7","D8")) +
   xlab(NULL)
 
-grid.arrange(p1, p2, p3, p4, ncol=2)
+p5 = ggplot(aes(x=Census.Region, fill = Census.Region.Division), data= df_cms, stat = "count")+
+  geom_bar()+ 
+  ggtitle("Number of CMS per Census Region with the divisions shown.")+
+  scale_x_discrete(breaks = 1:4, labels=c("MIDWEST","NORTHEAST","SOUTH","WEST")) +
+  xlab(NULL)
+
+grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
 
 ### Univariate Analysis Section
+
+<p>We will start the initial analysis by obtaining the frequency for each one of the variables of the columns:</p> 
+
+<ol>
+<li>"Census.Region"</p>
+<li>"Census Region Division"</p>
+<li>"Federal Region"</p>
+<li>"Bureau of Economic Analysis Region"</p>
+</ol>
 
 ```{r}
 library(plyr)
@@ -149,6 +163,11 @@ print(count(df_cms, vars = "Economic.Analysis.Region"))
 
 ```
 
+<p>In the Census Region, the region South has the highest account of entries with 67038 and the lowest in the West with 26710. In the Divisions in the Census Region, the Division 5 South Atlantic has the hights entries with 34116, and the lowest in the Division 1 New England.</p>
+
+<p>When considering Regions under the different Federal Banks, Region IV is the one with the highest entry and the region with the lowest entries is Region_XIII with 4283. Lastly, The Rocky Mountain Region of the Bureau of Economic Analysis is the region with the lowest entries in 3926. On the other hand, Southeast is the region with the highest entries with 48468.</p>
+
+<p>Before we continue, we will get the summary of the Total Discharges, Average Covered Charges, Average Total Payments and Average Medicare Payments per Census Region.</p>
 
 ```{r}
 by(df_cms$Total.Discharges, df_cms$Census.Region, summary)
@@ -168,10 +187,11 @@ by(df_cms$Average.Total.Payments, df_cms$Census.Region, summary)
 by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 ```
 
+## EDA: Furthe Data Exploration
+### Bivariate Plots Section
 
-```{r}
-by(df_cms$DRG.Definition, df_cms$Census.Region, summary)
-```
+
+
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
 
