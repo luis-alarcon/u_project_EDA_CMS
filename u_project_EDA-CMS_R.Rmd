@@ -199,6 +199,8 @@ by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 
 #### Average Covered Charges vs Average Medicare Payments
 
+##### CC-vs-MP:Plots
+
 ```{r echo=FALSE, Bivariate_Plots_Total_CC-vs-MP,fig.width=14,fig.height=11}
 ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
@@ -236,7 +238,11 @@ p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=sub
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
 
+##### CC-vs-MP:Analysis
+
 #### Total Discharges vs Average Total Payments
+
+##### TD-vs-TP:Plots
 
 ```{r echo=FALSE, Bivariate_Plots_Total_TD-vs-TP,fig.width=14,fig.height=11}
 ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, color=Census.Region),data= df_cms) + 
@@ -275,7 +281,11 @@ p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
 
+##### TP-vs-MP:Analysis
+
 #### Average Total Payments vs Average Medicare Payments
+
+##### TP-vs-MP:Plots
 
 ```{r echo=FALSE, Bivariate_Plots_Total_TP-vs-MP,fig.width=14,fig.height=11}
 ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
@@ -313,6 +323,8 @@ p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subs
 
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
+
+##### TP-vs-MP:Analysis
 
 # awd
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
