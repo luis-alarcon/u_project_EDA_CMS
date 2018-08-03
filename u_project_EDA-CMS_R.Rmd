@@ -197,14 +197,16 @@ by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 <li>Average Total Payments vs Average Medicare Payments.</li>
 </ol>
 
-```{r echo=FALSE, Bivariate_Plots_Total_CC-vs-mp,fig.width=14,fig.height=11}
+#### Average Covered Charges vs Average Medicare Payments
+
+```{r echo=FALSE, Bivariate_Plots_Total_CC-vs-MP,fig.width=14,fig.height=11}
 ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")
 ```
 
 
-```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-mp,fig.width=14,fig.height=11}
+```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-MP,fig.width=14,fig.height=11}
 p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
@@ -230,6 +232,84 @@ p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=sub
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)
+
+grid.arrange(p1, p2, p3, p4, p5, ncol=2)
+```
+
+#### Total Discharges vs Average Total Payments
+
+```{r echo=FALSE, Bivariate_Plots_Total_TD-vs-TP,fig.width=14,fig.height=11}
+ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, color=Census.Region),data= df_cms) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
+  ggtitle("Average Covered Charges vs Average Medicare Payments")
+```
+
+
+```{r echo=FALSE, Bivariate_Plots_CR_TD-vs-TP,fig.width=14,fig.height=11}
+p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, color=Census.Region),data= df_cms) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
+  ggtitle("Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,75000)+
+  xlim(0,500)
+
+p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "MIDWEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
+  ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,75000)+
+  xlim(0,500)
+
+p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "NORTHEAST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
+  ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,75000)+
+  xlim(0,500)
+
+p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "SOUTH")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "yellow")+ 
+  ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,75000)+
+  xlim(0,500)
+
+p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "WEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
+  ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,75000)+
+  xlim(0,500)
+
+grid.arrange(p1, p2, p3, p4, p5, ncol=2)
+```
+
+#### Average Total Payments vs Average Medicare Payments
+
+```{r echo=FALSE, Bivariate_Plots_Total_TP-vs-MP,fig.width=14,fig.height=11}
+ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
+  ggtitle("Average Covered Charges vs Average Medicare Payments")
+```
+
+
+```{r echo=FALSE, Bivariate_Plots_CR_TP-vs-MP,fig.width=14,fig.height=11}
+p1 =ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
+  ggtitle("Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,50000)+
+  xlim(0,50000)
+
+p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "MIDWEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
+  ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,50000)+
+  xlim(0,50000)
+
+p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "NORTHEAST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
+  ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,50000)+
+  xlim(0,50000)
+
+p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "SOUTH")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "yellow")+ 
+  ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,50000)+
+  xlim(0,50000)
+
+p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "WEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
+  ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
+  ylim(0,50000)+
+  xlim(0,50000)
 
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
