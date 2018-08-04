@@ -247,6 +247,19 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 
 ##### CC-vs-MP:Analysis
 
+```{r}
+with(subset(df_cms, Provider.State = "MIDWEST"), cor.test(Average.Covered.Charges, Average.Medicare.Payments))
+```
+
+
+```{r}
+res <- cor.test(df_cms$Average.Covered.Charges, df_cms$Average.Medicare.Payments, 
+                    method = "pearson")
+
+res
+```
+
+
 #### Total Discharges vs Average Total Payments
 
 ##### TD-vs-TP:Plots
@@ -297,6 +310,13 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 
 ##### TP-vs-MP:Analysis
 
+```{r}
+res <- cor.test(df_cms$Total.Discharges, df_cms$Average.Total.Payments, 
+                    method = "pearson")
+
+res
+```
+
 #### Average Total Payments vs Average Medicare Payments
 
 ##### TP-vs-MP:Plots
@@ -344,6 +364,13 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 <p>All graphs show the same pattern. There are mild differences in the width. Further analysis could reveal more about this pattern.</p>
 
 ##### TP-vs-MP:Analysis
+
+```{r}
+res <- cor.test(df_cms$Average.Total.Payments, df_cms$Average.Medicare.Payments, 
+                    method = "pearson")
+
+res
+```
 
 # awd
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
