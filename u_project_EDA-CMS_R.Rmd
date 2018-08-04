@@ -201,12 +201,15 @@ by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 
 ##### CC-vs-MP:Plots
 
+<p>The first graph that is going to show the whole data from df_cms. The whole data is graphed in this way in order to acquire the whole pattern of the data between the two variables. </p>
+
 ```{r echo=FALSE, Bivariate_Plots_Total_CC-vs-MP,fig.width=14,fig.height=11}
 ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")
 ```
 
+<pAs seen on the graph, the majority of the data is under the x-value 250000 and y-value 50000. Due to this the second graph will have the limits mentioned above and also 4 further graphs will be added; the entire data frame data selectively gather under the four census regions of the USA, Midwest, Northeast, South and West.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-MP,fig.width=14,fig.height=11}
 p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
