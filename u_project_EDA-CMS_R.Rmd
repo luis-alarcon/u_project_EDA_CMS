@@ -247,11 +247,8 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 
 ##### CC-vs-MP:Analysis
 
-```{r}
-with(subset(df_cms, Provider.State = "MIDWEST"), cor.test(Average.Covered.Charges, Average.Medicare.Payments))
-```
-
-
+<p>We start the analysis by determining the Correlation between the two variables. We will perform a Pearson test between the two variables without subdividing the data into regions.</p>
+ 
 ```{r}
 res <- cor.test(df_cms$Average.Covered.Charges, df_cms$Average.Medicare.Payments, 
                     method = "pearson")
@@ -259,6 +256,9 @@ res <- cor.test(df_cms$Average.Covered.Charges, df_cms$Average.Medicare.Payments
 res
 ```
 
+<p>The test shows a cor value of 0.767. Values between 0.7 and 0.9 state that there is a steady uphill linear relationship between Average Covered Charges and Average Medicare payments.</p>
+
+<p>For the moment we will only explore the correlation between the two variables, and in a subsequent analysis with more detail and in-depth data we will explore other analysis between these two variables</p>
 
 #### Total Discharges vs Average Total Payments
 
@@ -310,12 +310,21 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 
 ##### TP-vs-MP:Analysis
 
+<p>We start the analysis by determining the Correlation between the two variables. We will perform a Pearson test between the two variables without subdividing the data into regions.</p>
+
 ```{r}
 res <- cor.test(df_cms$Total.Discharges, df_cms$Average.Total.Payments, 
                     method = "pearson")
 
 res
 ```
+
+<p>The test shows a cor value of -0.016. Values between 0 and -0.3 state that there is a weak negative linear relationship between Total Discharges and Average Total Payments.</p>
+
+<p>It is unusual that this the correlation found between these variables; especially since these two variables involve the total of discharges and average total payments.</p>  
+
+<p>For the moment we will only explore the correlation between the two variables, and in a subsequent analysis with more detail and in-depth data, we will explore other analysis between these two variables.</p>
+
 
 #### Average Total Payments vs Average Medicare Payments
 
@@ -365,6 +374,8 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 
 ##### TP-vs-MP:Analysis
 
+<p>We start the analysis by determining the Correlation between the two variables. We will perform a Pearson test between the two variables without subdividing the data into regions.</p>
+
 ```{r}
 res <- cor.test(df_cms$Average.Total.Payments, df_cms$Average.Medicare.Payments, 
                     method = "pearson")
@@ -372,6 +383,15 @@ res <- cor.test(df_cms$Average.Total.Payments, df_cms$Average.Medicare.Payments,
 res
 ```
 
+<p>The test shows a cor value of 0.989. Values between 0.7 and 0.9 state that there is a steady uphill linear relationship between Total Payments and Average Medicare Payments.</p>
+
+<p>For the moment we will only explore the correlation between the two variables, and in a subsequent analysis with more detail and in-depth data, we will explore other analysis between these two variables.</p>
+
+
+
+
+
+### Multivariate Data
 # awd
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
 
