@@ -70,6 +70,7 @@ library(gridExtra)
 library(grid)
 library(ggplot2)
 library(lattice)
+library(GGally)
 ```
 
 <p>Secondly, we load the dataset from its original location to the data frame df_cms.</p>
@@ -392,6 +393,17 @@ res
 
 
 ### Multivariate Data
+#### Multivariate Data: Plot
+
+```{r echo=FALSE, Multivariate_Data_Plots,fig.width=22,fig.height=13}
+theme_set(theme_minimal(20))
+
+# set the seed for reproducible results
+set.seed(1836)
+df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges","Average.Total.Payments","Average.Medicare.Payments")]
+ggpairs(df_cms_subset[sample.int(nrow(pf_subset),2000), ])
+```
+
 # awd
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
 
