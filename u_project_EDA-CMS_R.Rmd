@@ -418,6 +418,7 @@ ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
 
 ```{r}
 
+
 df_cms_mean <- df_cms  %>%
   group_by(Census.Region,Census.Region.Division) %>%
   summarise(mean_total_discharges = mean(Total.Discharges),
