@@ -71,6 +71,7 @@ library(grid)
 library(ggplot2)
 library(lattice)
 library(GGally)
+library(dplyr)
 ```
 
 <p>Secondly, we load the dataset from its original location to the data frame df_cms.</p>
@@ -399,9 +400,52 @@ res
 theme_set(theme_minimal(20))
 
 # set the seed for reproducible results
-set.seed(1836)
+set.seed(2500)
 df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges","Average.Total.Payments","Average.Medicare.Payments")]
 ggpairs(df_cms_subset[sample.int(nrow(pf_subset),2000), ])
+```
+
+### awdasd
+
+```{r,fig.width7,fig.height=7}
+set.seed(2500)
+ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
+  geom_boxplot(aes(y= Total.Discharges))+
+  coord_cartesian(ylim = c(0, 90))+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+```{r}
+
+df_cms_mean <- df_cms  %>%
+  group_by(Census.Region,Census.Region.Division) %>%
+  summarise(mean_total_discharges = mean(Total.Discharges),
+            mean_average_covered_charges = mean(Average.Covered.Charges),
+            mean_average_total_payments = mean(Average.Total.Payments),
+            mean_avarage_medicare_payments = mean(Average.Medicare.Payments),
+            n = n()) %>%
+  ungroup()%>%
+  arrange(Census.Region.Division)
+
+head(df_cms_mean)
+```
+
+
+```{r}
+
+df_cms_median <- df_cms  %>%
+  group_by(Census.Region,Census.Region.Division) %>%
+  summarise(median_total_discharges = median(Total.Discharges),
+            median_average_covered_charges = median(Average.Covered.Charges),
+            median_average_total_payments = median(Average.Total.Payments),
+            median_avarage_medicare_payments = median(Average.Medicare.Payments),
+            n = n()) %>%
+  ungroup()%>%
+  arrange(Census.Region.Division)
+
+head(df_cms_median)
+
 ```
 
 # awd
