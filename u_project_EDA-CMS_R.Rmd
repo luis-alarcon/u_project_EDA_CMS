@@ -64,14 +64,14 @@ By Luis Alarcon
 ### Data Summary
 
 <p>Firstly, we load the packages that we are going to use in this project.</p>
-```{r}
+```{r} 
+detach("package:plyr", unload=TRUE)
 library(ggplot2)
 library(gridExtra)
 library(grid)
-library(ggplot2)
 library(lattice)
 library(GGally)
-library(dplyr)
+library(dplyr) 
 ```
 
 <p>Secondly, we load the dataset from its original location to the data frame df_cms.</p>
@@ -402,12 +402,12 @@ theme_set(theme_minimal(20))
 # set the seed for reproducible results
 set.seed(2500)
 df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges","Average.Total.Payments","Average.Medicare.Payments")]
-ggpairs(df_cms_subset[sample.int(nrow(pf_subset),2000), ])
+ggpairs(df_cms_subset[sample.int(nrow(df_cms_subset),2000), ])
 ```
 
 ### awdasd
 
-```{r,fig.width7,fig.height=7}
+```{r,fig.width=10,fig.height=10}
 set.seed(2500)
 ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
   geom_boxplot(aes(y= Total.Discharges))+
@@ -416,9 +416,7 @@ ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
 ```
 
 
-```{r}
-
-
+```{r} 
 df_cms_mean <- df_cms  %>%
   group_by(Census.Region,Census.Region.Division) %>%
   summarise(mean_total_discharges = mean(Total.Discharges),
