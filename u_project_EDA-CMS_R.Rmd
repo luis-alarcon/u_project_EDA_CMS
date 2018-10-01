@@ -1,7 +1,8 @@
 ---
-title: "
-"
-output: html_notebook
+title: ' '
+output:
+  html_document:
+    df_print: paged
 ---
 
 Consumer Complaint Database
@@ -13,29 +14,40 @@ By Luis Alarcon
 
 # Disclaimer
 
-<p>I endeavour in this project out of my own volition. It is the first time that I come in contact with this data. I carry no bias before carrying this Exploratory Data Analysis, and the primary goal is to further my knowledge in the methods as well as an understanding of different areas through data analysis.<p>
-
-# Abstract
-
-
+<p>I endeavour in this project out of my own volition. It is the first time 
+that I come in contact with this data. I carry no bias before carrying this 
+Exploratory Data Analysis, and the primary goal is to further my knowledge in 
+the methods as well as an understanding of different areas through data 
+analysis.<p>
 
 # Introduction
 ## Dataset General Information
 
-<p>The full name of the data set is "Inpatient Prospective Payment System (IPPS) Provider Summary for the Top 100 Diagnosis-Related Groups (DRG) - FY2011". It is own and updated by CMS.</p>
+<p>The full name of the data set is "Inpatient Prospective Payment System 
+(IPPS) Provider Summary for the Top 100 Diagnosis-Related Groups (DRG) - 
+FY2011". It is own and updated by CMS.</p>
 
-<p>The last update was on May 29, 2014, and the metadata was updated on August 30, 2017. For access to the data set as well as further information, please go to this link.</p>
+<p>The last update was on May 29, 2014, and the metadata was updated on 
+August 30, 2017. For access to the data set as well as further information, 
+please go to this link.</p>
 
 ## Dataset Contents
 
-<p>The Dataset has 12 columns. These are the names and the description of them:</p>
-<h7><b>This information it is copied straight from the pdf attachment found in this <a href = "https://data.cms.gov/api/views/97k6-zzx3/files/4496fc4f-5f10-43e4-8183-b6da867f8981?download=true&filename=Medicare_Hospital_Inpatient_PUF_Methodology_2017-08-30.pdf">link</a>.</b></h7>
+<p>The Dataset has 12 columns. These are the names and the description of 
+them:</p>
+<h7><b>This information it is copied straight from the pdf attachment found 
+in this <a href = "https://data.cms.gov/api/views/97k6-zzx3/files/4496fc4f-
+5f10-43e4-8183-b6da867f8981?download=true&filename=Medicare_Hospital_Inpatient_
+PUF_Methodology_2017-08-30.pdf">link</a>.</b></h7>
 <ol>
 
 <li><b>DRG Definition</b></li>
-    The code and description identifying the MS-DRG. MS-DRGs are a classification system that groups similar clinical conditions (diagnoses) and the procedures furnished by the hospital during the stay.
+    The code and description identifying the MS-DRG. MS-DRGs are a 
+    classification system that groups similar clinical conditions (diagnoses) 
+    and the procedures furnished by the hospital during the stay.
 <li><b>Provider Id</b></li>
-    The CMS Certification Number (CCN) assigned to the Medicare certified hospital facility.
+    The CMS Certification Number (CCN) assigned to the Medicare certified 
+    hospital facility.
 <li><b>Provider Name</b></li>
     The name of the provider.
 <li><b>Provider Street Address</b></li>
@@ -49,23 +61,43 @@ By Luis Alarcon
 <li><b>Provider HRR</b></li>
     The Hospital Referral Region (HRR) where the provider is located.
 <li><b>Total Discharges</b></li>
-    The number of discharges billed by the provider for inpatient hospital services.
+    The number of discharges billed by the provider for inpatient 
+    hospital services.
 <li><b>Average Covered Charges</b></li>
-    The provider's average charge for services covered by Medicare for all discharges in the MS-DRG. These will vary from hospital to hospital because of differences in hospital charge structures.
+    The provider's average charge for services covered by Medicare 
+    for all discharges in the MS-DRG. These will vary from hospital to 
+    hospital because of differences in hospital charge structures.
 <li><b>Average Total Payments</b></li>
-    The average total payments to all providers for the MS-DRG including the MS-DRG amount, teaching, disproportionate share, capital, and outlier payments for all cases. Also included in average total payments are co-payment and deductible amounts that the patient is responsible for and any additional payments by third parties for coordination of benefits.
+    The average total payments to all providers for the MS-DRG including 
+    the MS-DRG amount, teaching, disproportionate share, capital, and outlier
+    payments for all cases. Also included in average total payments are 
+    co-payment and deductible amounts that the patient is responsible for and 
+    any additional payments by third parties for coordination of benefits.
 <li><b>Average Medicare Payments</b></li>
-    The average amount that Medicare pays to the provider for Medicare's share of the MS-DRG. Average Medicare payment amounts include the MS-DRG amount, teaching, disproportionate share, capital, and outlier payments for all cases. Medicare payments DO NOT include beneficiary co-payments and deductible amounts norany additional payments from third parties for coordination of benefits. Note: In general, Medicare FFS claims with dates-of-service or dates-of-discharge on or after April 1, 2013, incurred a 2 percent reduction in Medicare payment. This is in response to mandatory across-the-board reductions in Federal spending, also known as sequestration. For additional information, <a href= "http://www.cms.gov/Outreach-and-Education/Outreach/FFSProvPartProg/Downloads/2013-03-08-standalone.pdf">visit</a>. 
+    The average amount that Medicare pays to the provider for Medicare's share 
+    of the MS-DRG. Average Medicare payment amounts include the MS-DRG amount, 
+    teaching, disproportionate share, capital, and outlier payments for all 
+    cases. Medicare payments DO NOT include beneficiary co-payments and 
+    deductible amounts norany additional payments from third parties for 
+    coordination of benefits. Note: In general, Medicare FFS claims with 
+    dates-of-service or dates-of-discharge on or after April 1, 2013, incurred 
+    a 2 percent reduction in Medicare payment. This is in response to mandatory 
+    across-the-board reductions in Federal spending, also known as 
+    sequestration. For additional information, <a href= "http://www.cms.gov/Outreach-and-Education/Outreach/FFSProvPartProg/Downloads/
+    2013-03-08-standalone.pdf">visit</a>. 
 </ol>
 
+<p>The initial process of refining the dataset was done in a python script 
+named "u_project_EDA-CMS_python3.ipynb", the code is presented in 
+"u_project_EDA-CMS_python3.html"; for further details examine the HTML file.</p>
 
 # Exploratory Data Analysis (EDA)
 ## EDA: Initial Data Exploration
 ### Data Summary
 
 <p>Firstly, we load the packages that we are going to use in this project.</p>
-```{r} 
-detach("package:plyr", unload=TRUE)
+```{r echo=FALSE} 
+
 library(ggplot2)
 library(gridExtra)
 library(grid)
@@ -74,66 +106,90 @@ library(GGally)
 library(dplyr) 
 ```
 
-<p>Secondly, we load the dataset from its original location to the data frame df_cms.</p>
+<p>Secondly, we load the dataset from its original location to the 
+data frame df_cms.</p>
 
-```{r}
+```{r echo=FALSE}
 df_cms <- read.csv("./datasets/df_cms.csv")
 head(df_cms)
 ```
 
-<p>Before we continue, we check if there are any null values within the data frame df_cms.</p>
 
-```{r}
+<p>Before we continue, we check if there are any null values within the 
+data frame df_cms.</p>
+
+```{r echo=FALSE}
 df_null <- df_cms[is.na(df_cms),]
 
 head(df_null)
 ```
 
-<p>There are no null values in the data frame. Afterwards, we check the number of entries present in this dataset.</p>
+<p>There are no null values in the data frame. Afterwards, we check the 
+number of entries present in this dataset.</p>
 
-```{r}
+```{r echo=FALSE}
 dim(df_cms)
 ```
 
-<p>The number of entries is 163065. The number of entries is significant. Therefore, We proceed to make a quick summary of the data.</p>
+<p>The number of entries is 163065. The number of entries is significant. 
+Therefore, We proceed to make a quick summary of the data.</p>
 
-```{r}
+```{r echo=FALSE}
 summary(df_cms)
 ```
 
-<p>Due to the vast array of data and groups found in this particular data frame. We will begin our analysis per regions. We will start with "Census Region" since it encompasses all states within the four central regions of the USA, the divisions within regions, the Federal bank that is in charge of the state as well as the Regions established by the Bureau of Economic Analysis.</p>
+
+<p>Due to the vast array of data and groups found in this particular 
+data frame. We will begin our analysis per regions. We will start with 
+"Census Region" since it encompasses all states within the four central 
+regions of the USA, the divisions within regions, the Federal bank that is in 
+charge of the state as well as the Regions established by the Bureau of 
+Economic Analysis.</p>
 
 ### Univariate Plots Section
 
-<p>This graph contains the number of entry per each of the groups mentioned above.</p>
+<p>This graph contains the number of entry per each of the groups mentioned 
+above.</p>
 
 ```{r echo=FALSE, Bivariate_Plots,fig.width=13,fig.height=10}
-p1 = ggplot(df_cms) + geom_histogram(aes(x = Census.Region, fill = Census.Region), stat = "count") + 
+p1 = ggplot(df_cms) + 
+  geom_histogram(aes(x = Census.Region, fill = Census.Region), stat = "count") + 
   ggtitle("Number of CMS per Census Region.")+
   scale_x_discrete(breaks = 1:4, labels=c("MIDWEST","NORTHEAST","SOUTH","WEST")) +
   xlab(NULL)
 
-p2 = ggplot(df_cms) + geom_histogram(aes(x = Census.Region.Division, fill = Census.Region.Division), stat = "count") + 
+p2 = ggplot(df_cms) + geom_histogram(aes(x = Census.Region.Division, 
+                                         fill = Census.Region.Division), 
+                                     stat = "count") + 
   ggtitle("Number of CMS per Census Region Division.") +
-  scale_x_discrete(breaks = 1:9, labels=c("D1","D2","D3","D4","D5","D6","D7","D8","D9")) +
+  scale_x_discrete(breaks = 1:9, labels=c("D1","D2","D3","D4","D5","D6",
+                                          "D7","D8","D9")) +
   xlab(NULL)
 
-p3 = ggplot(df_cms) + geom_histogram(aes(x = Federal.Region, fill = Federal.Region), stat = "count") + 
+p3 = ggplot(df_cms) + geom_histogram(aes(x = Federal.Region, 
+                                         fill = Federal.Region),
+                                     stat = "count") + 
   ggtitle("Number of CMS per Federal Bank Region.")+
   scale_x_discrete(breaks = 1:9, labels=c("REGION_I","REGION_II","REGION_III",
-                                          "REGION_IV","REGION_V","REGION_VI","REGION_VII",
+                                          "REGION_IV","REGION_V","REGION_VI",
+                                          "REGION_VII",
                                           "REGION_VIII","REGION_X")) +
   xlab(NULL)
 
-p4 = ggplot(df_cms) + geom_histogram(aes(x = Economic.Analysis.Region, fill = Economic.Analysis.Region), stat = "count") + 
+p4 = ggplot(df_cms) + geom_histogram(aes(x = Economic.Analysis.Region, 
+                                         fill = Economic.Analysis.Region), 
+                                     stat = "count") + 
   ggtitle("Number of CMS per Bureau of Economic Analysis Region.")+
-  scale_x_discrete(breaks = 1:8, labels=c("D1","D2","D3","D4","D5","D6","D7","D8")) +
+  scale_x_discrete(breaks = 1:8, labels=c("D1","D2","D3","D4","D5","D6",
+                                          "D7","D8")) +
   xlab(NULL)
 
-p5 = ggplot(aes(x=Census.Region, fill = Census.Region.Division), data= df_cms, stat = "count")+
+p5 = ggplot(aes(x=Census.Region, fill = Census.Region.Division), data= df_cms, 
+            stat = "count")+
   geom_bar()+ 
   ggtitle("Number of CMS per Census Region with the divisions shown.")+
-  scale_x_discrete(breaks = 1:4, labels=c("MIDWEST","NORTHEAST","SOUTH","WEST")) +
+  scale_x_discrete(breaks = 1:4, labels=c("MIDWEST","NORTHEAST",
+                                          "SOUTH","WEST")) +
   xlab(NULL)
 
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
@@ -141,7 +197,8 @@ grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 
 ### Univariate Analysis Section
 
-<p>We will start the initial analysis by obtaining the frequency for each one of the variables of the columns:</p> 
+<p>We will start the initial analysis by obtaining the frequency for each 
+one of the variables of the columns:</p> 
 
 <ol>
 <li>"Census.Region"</p>
@@ -163,11 +220,20 @@ print(count(df_cms, vars = "Economic.Analysis.Region"))
 
 ```
 
-<p>In the Census Region, the region South has the highest account of entries with 67038 and the lowest in the West with 26710. In the Divisions in the Census Region, the Division 5 South Atlantic has the hights entries with 34116, and the lowest in the Division 1 New England.</p>
+<p>In the Census Region, the region South has the highest account of 
+entries with 67038 and the lowest in the West with 26710. In the Divisions 
+in the Census Region, the Division 5 South Atlantic has the hights entries 
+with 34116, and the lowest in the Division 1 New England.</p>
 
-<p>When considering Regions under the different Federal Banks, Region IV is the one with the highest entry and the region with the lowest entries is Region_XIII with 4283. Lastly, The Rocky Mountain Region of the Bureau of Economic Analysis is the region with the lowest entries in 3926. On the other hand, Southeast is the region with the highest entries with 48468.</p>
+<p>When considering Regions under the different Federal Banks, Region IV is 
+the one with the highest entry and the region with the lowest entries is 
+Region_XIII with 4283. Lastly, The Rocky Mountain Region of the Bureau of 
+Economic Analysis is the region with the lowest entries in 3926. On the other 
+hand, Southeast is the region with the highest entries with 48468.</p>
 
-<p>Before we continue, we will get the summary of the Total Discharges, Average Covered Charges, Average Total Payments and Average Medicare Payments per Census Region.</p>
+<p>Before we continue, we will get the summary of the Total Discharges, 
+Average Covered Charges, Average Total Payments and Average Medicare 
+Payments per Census Region.</p>
 
 ```{r}
 by(df_cms$Total.Discharges, df_cms$Census.Region, summary)
@@ -192,9 +258,17 @@ by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 
 <p>We will start by analysing the following group of variables together:</p>
 <ol>
-<li>Average Covered Charges vs Average Medicare Payments: This comparison was chosen because Average Covered Charges are the average charge for services covered by Medicare for all discharges in the-DRG and Average Medicare Payments are the average amount that Medicare pays providers for Medicare's share of the MS-DRG.</li>
+<li>Average Covered Charges vs Average Medicare Payments: This comparison was 
+chosen because Average Covered Charges are the average charge for services 
+covered by Medicare for all discharges in the-DRG and Average Medicare Payments 
+are the average amount that Medicare pays providers for Medicare's share of the 
+MS-DRG.</li>
 
-<li>Total Discharges vs Average Total Payments: This comparison was chosen because the total discharges account for the number of discharges billed by the provider for inpatient hospital services and the average total payments account for the total the average total payments to all providers for the MS-DRG; including partial coverage by the patient.</li>
+<li>Total Discharges vs Average Total Payments: This comparison was chosen 
+because the total discharges account for the number of discharges billed by 
+the provider for inpatient hospital services and the average total payments 
+account for the total the average total payments to all providers for the 
+MS-DRG; including partial coverage by the patient.</li>
 
 <li>Average Total Payments vs Average Medicare Payments.</li>
 </ol>
@@ -203,39 +277,56 @@ by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 
 ##### CC-vs-MP:Plots
 
-<p>The first graph that is going to show the whole data from df_cms. The whole data is graphed in this way in order to acquire the whole pattern of the data between the two variables. </p>
+<p>The first graph that is going to show the whole data from df_cms. 
+The whole data is graphed in this way in order to acquire the whole pattern of 
+the data between the two variables. </p>
 
 ```{r echo=FALSE, Bivariate_Plots_Total_CC-vs-MP,fig.width=14,fig.height=11}
-ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
+ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, 
+           color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")
 ```
 
-<pAs seen on the graph, the majority of the data is under the x-value 250000 and y-value 50000. Due to this the second graph will have the limits mentioned above and also 4 further graphs will be added; the entire data frame data selectively gather under the four census regions of the USA, Midwest, Northeast, South and West.</p>
+<pAs seen on the graph, the majority of the data is under the x-value 
+250000 and y-value 50000. Due to this the second graph will have the limits 
+mentioned above and also 4 further graphs will be added; the entire data 
+frame data selectively gather under the four census regions of the USA, 
+Midwest, Northeast, South and West.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-MP,fig.width=14,fig.height=11}
-p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
+p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, 
+               color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)
 
-p2 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "MIDWEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
-  ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
+p2 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "MIDWEST")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
+  ggtitle("Midwest Region: Average Covered Charges 
+          vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)
 
-p3 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "NORTHEAST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
+p3 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "NORTHEAST")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)
 
-p4 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "SOUTH")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
+p4 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "SOUTH")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)
 
-p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "WEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
+p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "WEST")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)
@@ -243,64 +334,89 @@ p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),data=sub
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
 
-<p>As we can see from the graph West and Midwest regions, have a similar scatter plot, flatter and more left-leaning. However, Midwest has a more linear shape than the West region.</p>
+<p>As we can see from the graph West and Midwest regions, have a similar 
+scatter plot, flatter and more left-leaning. However, Midwest has a more 
+linear shape than the West region.</p>
 
-<p>Northeast and South regions have similar scatterplots with widening x and y profile than other regions. However, the South region have a straight line. It will be interesting to know why it was developed.</p>
+<p>Northeast and South regions have similar scatterplots with widening x 
+and y profile than other regions. However, the South region have a straight 
+line. It will be interesting to know why it was developed.</p>
 
 ##### CC-vs-MP:Analysis
 
-<p>We start the analysis by determining the Correlation between the two variables. We will perform a Pearson test between the two variables without subdividing the data into regions.</p>
+<p>We start the analysis by determining the Correlation between the 
+two variables. We will perform a Pearson test between the two variables 
+without subdividing the data into regions.</p>
  
 ```{r}
-res <- cor.test(df_cms$Average.Covered.Charges, df_cms$Average.Medicare.Payments, 
+res <- cor.test(df_cms$Average.Covered.Charges, 
+                df_cms$Average.Medicare.Payments, 
                     method = "pearson")
 
 res
 ```
 
-<p>The test shows a cor value of 0.767. Values between 0.7 and 0.9 state that there is a steady uphill linear relationship between Average Covered Charges and Average Medicare payments.</p>
+<p>The test shows a cor value of 0.767. Values between 0.7 and 0.9 state that 
+there is a steady uphill linear relationship between Average Covered Charges 
+and Average Medicare payments.</p>
 
-<p>For the moment we will only explore the correlation between the two variables, and in a subsequent analysis with more detail and in-depth data we will explore other analysis between these two variables</p>
+<p>For the moment we will only explore the correlation between the two 
+variables, and in a subsequent analysis with more detail and in-depth 
+data we will explore other analysis between these two variables</p>
 
 #### Total Discharges vs Average Total Payments
 
 ##### TD-vs-TP:Plots
 
-<p>This first graph is going to deliver an overall picture of the relation between the two data columns; including data patterns.</p>
+<p>This first graph is going to deliver an overall picture of the relation 
+between the two data columns; including data patterns.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_Total_TD-vs-TP,fig.width=14,fig.height=11}
-ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, color=Census.Region),data= df_cms) + 
+ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, 
+           color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")
 ```
 
-<p>This graph shows that the majority of total discharges are fewer than 250 with an increase average total payments are mostly under 25000$.</p>
+<p>This graph shows that the majority of total discharges are fewer than 
+250 with an increase average total payments are mostly under 25000$.</p>
 
-<p>The next graph will plot the same graph as above but with limits of x-value 500 and y-value 50000, as well as four separate graphs with the data frame gather selectively from the regions of the USA.</p>
+<p>The next graph will plot the same graph as above but with limits of 
+x-value 500 and y-value 50000, as well as four separate graphs with the 
+data frame gather selectively from the regions of the USA.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_TD-vs-TP,fig.width=14,fig.height=11}
-p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, color=Census.Region),data= df_cms) + 
+p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, 
+               color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,500)
 
-p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "MIDWEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
+p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
+            data=subset(df_cms, Census.Region == "MIDWEST")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
   ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,500)
 
-p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "NORTHEAST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
+p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
+            data=subset(df_cms, Census.Region == "NORTHEAST")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,500)
 
-p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "SOUTH")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
+p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
+            data=subset(df_cms, Census.Region == "SOUTH")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,500)
 
-p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms, Census.Region == "WEST")) + geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
+p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
+            data=subset(df_cms, Census.Region == "WEST")) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,500)
@@ -308,11 +424,18 @@ p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),data=subset(df_cms
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
 
-<p>All graphs share a similar pattern than the one shared from the pattern mention in the general and global graph. There are two distinct protrusions of data reflecting an increase of total discharges with approximately an average total payments of about 10000; with a constant increase of discharges, similar to a horizontal line. The pattern is repeated about 15000  Average Total Payments; it is less apparent in the West Region.</p>
+<p>All graphs share a similar pattern than the one shared from the pattern 
+mention in the general and global graph. There are two distinct protrusions 
+of data reflecting an increase of total discharges with approximately an 
+average total payments of about 10000; with a constant increase of discharges, 
+similar to a horizontal line. The pattern is repeated about 15000  Average 
+Total Payments; it is less apparent in the West Region.</p>
 
 ##### TP-vs-MP:Analysis
 
-<p>We start the analysis by determining the Correlation between the two variables. We will perform a Pearson test between the two variables without subdividing the data into regions.</p>
+<p>We start the analysis by determining the Correlation between the two 
+variables. We will perform a Pearson test between the two variables without 
+subdividing the data into regions.</p>
 
 ```{r}
 res <- cor.test(df_cms$Total.Discharges, df_cms$Average.Total.Payments, 
@@ -321,50 +444,69 @@ res <- cor.test(df_cms$Total.Discharges, df_cms$Average.Total.Payments,
 res
 ```
 
-<p>The test shows a cor value of -0.016. Values between 0 and -0.3 state that there is a weak negative linear relationship between Total Discharges and Average Total Payments.</p>
+<p>The test shows a cor value of -0.016. Values between 0 and -0.3 state that 
+there is a weak negative linear relationship between Total Discharges and 
+Average Total Payments.</p>
 
-<p>It is unusual that this the correlation found between these variables; especially since these two variables involve the total of discharges and average total payments.</p>  
+<p>It is unusual that this the correlation found between these variables; 
+especially since these two variables involve the total of discharges and 
+average total payments.</p>  
 
-<p>For the moment we will only explore the correlation between the two variables, and in a subsequent analysis with more detail and in-depth data, we will explore other analysis between these two variables.</p>
+<p>For the moment we will only explore the correlation between the two 
+variables, and in a subsequent analysis with more detail and in-depth data, 
+we will explore other analysis between these two variables.</p>
 
 
 #### Average Total Payments vs Average Medicare Payments
 
 ##### TP-vs-MP:Plots
 
-<p>This first graph is going to deliver an overall picture of the relation between the two data columns; including data patterns.</p>
+<p>This first graph is going to deliver an overall picture of the relation 
+between the two data columns; including data patterns.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_Total_TP-vs-MP,fig.width=14,fig.height=11}
-ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
+ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, 
+           color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")
 ```
 
-<p>This graph shows a linear-like pattern. The majority of the entries are within the liner pattern. Also, the majority of entries are within x-value and y-value limits of 50000.</p>
+<p>This graph shows a linear-like pattern. The majority of the entries are 
+within the liner pattern. Also, the majority of entries are within x-value 
+and y-value limits of 50000.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_TP-vs-MP,fig.width=14,fig.height=11}
-p1 =ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, color=Census.Region),data= df_cms) + 
+p1 =ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments, 
+               color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/40, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)
 
-p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "MIDWEST")) + geom_point(alpha = 1/40, position = position_jitter(h=0), color = "blue")+ 
+p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "MIDWEST")) + 
+  geom_point(alpha = 1/40, position = position_jitter(h=0), color = "blue")+ 
   ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)
 
-p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "NORTHEAST")) + geom_point(alpha = 1/40, position = position_jitter(h=0), color = "green")+ 
+p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "NORTHEAST")) + 
+  geom_point(alpha = 1/40, position = position_jitter(h=0), color = "green")+ 
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)
 
-p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "SOUTH")) + geom_point(alpha = 1/40, position = position_jitter(h=0), color = "red")+ 
+p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "SOUTH")) + 
+  geom_point(alpha = 1/40, position = position_jitter(h=0), color = "red")+ 
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)
 
-p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subset(df_cms, Census.Region == "WEST")) + geom_point(alpha = 1/40, position = position_jitter(h=0), color = "brown")+ 
+p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
+            data=subset(df_cms, Census.Region == "WEST")) + 
+  geom_point(alpha = 1/40, position = position_jitter(h=0), color = "brown")+ 
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)
@@ -372,11 +514,14 @@ p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),data=subs
 grid.arrange(p1, p2, p3, p4, p5, ncol=2)
 ```
 
-<p>All graphs show the same pattern. There are mild differences in the width. Further analysis could reveal more about this pattern.</p>
+<p>All graphs show the same pattern. There are mild differences in the width. 
+Further analysis could reveal more about this pattern.</p>
 
 ##### TP-vs-MP:Analysis
 
-<p>We start the analysis by determining the Correlation between the two variables. We will perform a Pearson test between the two variables without subdividing the data into regions.</p>
+<p>We start the analysis by determining the Correlation between the two 
+variables. We will perform a Pearson test between the two variables without 
+subdividing the data into regions.</p>
 
 ```{r}
 res <- cor.test(df_cms$Average.Total.Payments, df_cms$Average.Medicare.Payments, 
@@ -385,9 +530,13 @@ res <- cor.test(df_cms$Average.Total.Payments, df_cms$Average.Medicare.Payments,
 res
 ```
 
-<p>The test shows a cor value of 0.989. Values between 0.7 and 0.9 state that there is a steady uphill linear relationship between Total Payments and Average Medicare Payments.</p>
+<p>The test shows a cor value of 0.989. Values between 0.7 and 0.9 state that 
+there is a steady uphill linear relationship between Total Payments and Average 
+Medicare Payments.</p>
 
-<p>For the moment we will only explore the correlation between the two variables, and in a subsequent analysis with more detail and in-depth data, we will explore other analysis between these two variables.</p>
+<p>For the moment we will only explore the correlation between the two 
+variables, and in a subsequent analysis with more detail and in-depth data, 
+we will explore other analysis between these two variables.</p>
 
 
 
@@ -400,12 +549,16 @@ res
 theme_set(theme_minimal(20))
 
 # set the seed for reproducible results
-set.seed(2500)
-df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges","Average.Total.Payments","Average.Medicare.Payments")]
+set.seed(2000)
+df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges",
+                           "Average.Total.Payments",
+                           "Average.Medicare.Payments")]
 ggpairs(df_cms_subset[sample.int(nrow(df_cms_subset),2000), ])
 ```
 
-### awdasd
+### Further plots
+
+
 
 ```{r,fig.width=10,fig.height=10}
 set.seed(2500)
@@ -415,41 +568,14 @@ ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
+# Conclusion 
+<p>The Dataset is one that shows a significant amount of data towards Medicare 
+payment information in hospitals throughout the USA.  It consists of 16 
+variables and 163065 entries. We explore the various relationships between 
+total payments, Medicare payments, Total Discharges, and regions within the 
+USA.</p>
 
-```{r} 
-df_cms_mean <- df_cms  %>%
-  group_by(Census.Region,Census.Region.Division) %>%
-  summarise(mean_total_discharges = mean(Total.Discharges),
-            mean_average_covered_charges = mean(Average.Covered.Charges),
-            mean_average_total_payments = mean(Average.Total.Payments),
-            mean_avarage_medicare_payments = mean(Average.Medicare.Payments),
-            n = n()) %>%
-  ungroup()%>%
-  arrange(Census.Region.Division)
-
-head(df_cms_mean)
-```
-
-
-```{r}
-
-df_cms_median <- df_cms  %>%
-  group_by(Census.Region,Census.Region.Division) %>%
-  summarise(median_total_discharges = median(Total.Discharges),
-            median_average_covered_charges = median(Average.Covered.Charges),
-            median_average_total_payments = median(Average.Total.Payments),
-            median_avarage_medicare_payments = median(Average.Medicare.Payments),
-            n = n()) %>%
-  ungroup()%>%
-  arrange(Census.Region.Division)
-
-head(df_cms_median)
-
-```
-
-# awd
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+<p>The dataset is vast and much more analysis could be performed, for example, 
+the differences in payment from Medicare and Total payments made per procedure 
+per hospitals in the same region as well as through states or regions in the 
+USA. </p>
