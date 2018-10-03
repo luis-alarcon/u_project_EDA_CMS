@@ -579,3 +579,12 @@ USA.</p>
 the differences in payment from Medicare and Total payments made per procedure 
 per hospitals in the same region as well as through states or regions in the 
 USA. </p>
+
+```{r}
+library(ggplot2)
+library(ggmap)
+cities <- c("ARNHEM","ATHENS","BAAR","CAMBRIDGESHIRE")
+print(cities[1])
+geocode("ARNHEM")
+```
+
