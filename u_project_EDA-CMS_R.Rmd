@@ -316,7 +316,7 @@ mentioned above and also 4 further graphs will be added; the entire data
 frame data selectively gather under the four census regions of the USA, 
 Midwest, Northeast, South and West.</p>
 
-```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-MP,fig.width=14,fig.height=11}
+```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-MP,fig.width=9,fig.height=11}
 #We create a series of plots that showcase 
 #the average covered charges vs average medicare payments
 #This graph show an overall view of all regions
@@ -325,42 +325,50 @@ p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments,
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,250000)
+  xlim(0,250000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the Midwest
 p2 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-            data=subset(df_cms, Census.Region == "MIDWEST")) + 
+                data=subset(df_cms, Census.Region == "MIDWEST")) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
   ggtitle("Midwest Region: Average Covered Charges 
           vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,250000)
+  xlim(0,250000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the Northeast
 p3 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-            data=subset(df_cms, Census.Region == "NORTHEAST")) + 
+                data=subset(df_cms, Census.Region == "NORTHEAST")) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,250000)
+  xlim(0,250000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the South
 p4 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-            data=subset(df_cms, Census.Region == "SOUTH")) + 
+                data=subset(df_cms, Census.Region == "SOUTH")) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,250000)
+  xlim(0,250000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the West
 p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-            data=subset(df_cms, Census.Region == "WEST")) + 
+                data=subset(df_cms, Census.Region == "WEST")) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,250000)
+  xlim(0,250000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 
-grid.arrange(p1, p2, p3, p4, p5, ncol=2)
+#plotting the graphs
+p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
+grid.arrange(p1,p6, nrow=2)
+
 ```
 
 <p>As we can see from the graph West and Midwest regions, have a similar 
@@ -402,7 +410,7 @@ data we will explore other analysis between these two variables</p>
 <p>This first graph is going to deliver an overall picture of the relation 
 between the two data columns; including data patterns.</p>
 
-```{r echo=FALSE, Bivariate_Plots_Total_TD-vs-TP,fig.width=14,fig.height=11}
+```{r echo=FALSE, Bivariate_Plots_Total_TD-vs-TP,fig.width=9,fig.height=11}
 #We create a scatter plot between 
 #the total discharges vs average total payments
 ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, 
@@ -418,7 +426,7 @@ ggplot(aes(x=Total.Discharges, y=Average.Total.Payments,
 x-value 500 and y-value 50000, as well as four separate graphs with the 
 data frame gather selectively from the regions of the USA.</p>
 
-```{r echo=FALSE, Bivariate_Plots_CR_TD-vs-TP,fig.width=14,fig.height=11}
+```{r echo=FALSE, Bivariate_Plots_CR_TD-vs-TP,fig.width=9,fig.height=11}
 #We create a series of plots that showcase the total discharges vs average total payments
 #This graph show an overall view of all regions
 p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, 
@@ -426,7 +434,8 @@ p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments,
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,500)
+  xlim(0,500)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the Midwest
 p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -434,7 +443,8 @@ p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
   ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,500)
+  xlim(0,500)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the Northeast
 p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -442,7 +452,8 @@ p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,500)
+  xlim(0,500)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the South
 p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -450,7 +461,8 @@ p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,500)
+  xlim(0,500)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the West
 p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -458,9 +470,12 @@ p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,500)
+  xlim(0,500)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 
-grid.arrange(p1, p2, p3, p4, p5, ncol=2)
+#plotting the graphs
+p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
+grid.arrange(p1,p6, nrow=2)
 ```
 
 <p>All graphs share a similar pattern than the one shared from the pattern 
@@ -527,7 +542,8 @@ p1 =ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments,
   geom_point(alpha = 1/40, position = position_jitter(h=0))+ 
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,50000)
+  xlim(0,50000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the Midwest
 p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -535,7 +551,8 @@ p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   geom_point(alpha = 1/40, position = position_jitter(h=0), color = "blue")+ 
   ggtitle("Midwest Region: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,50000)
+  xlim(0,50000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the Northeast
 p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -543,7 +560,8 @@ p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   geom_point(alpha = 1/40, position = position_jitter(h=0), color = "green")+ 
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,50000)
+  xlim(0,50000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the South
 p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -551,7 +569,8 @@ p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   geom_point(alpha = 1/40, position = position_jitter(h=0), color = "red")+ 
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,50000)
+  xlim(0,50000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the West
 p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -559,9 +578,12 @@ p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   geom_point(alpha = 1/40, position = position_jitter(h=0), color = "brown")+ 
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
-  xlim(0,50000)
+  xlim(0,50000)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 
-grid.arrange(p1, p2, p3, p4, p5, ncol=2)
+#plotting the graphs
+p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
+grid.arrange(p1,p6, nrow=2)
 ```
 
 <p>All graphs show the same pattern. There are mild differences in the width. 
@@ -594,8 +616,12 @@ we will explore other analysis between these two variables.</p>
 
 
 
-### Multivariate Data
-#### Multivariate Data: Plot
+#### Further Plots
+
+<p>The following plot reveals a summary generated produced in 
+one summarised graph. The graph the relationships between Total Discharges, 
+Average Covered Changes, Average Total Payments and Average Medicare Payments, 
+including line graphs and scatter plots showing such the relationship.</p>
 
 ```{r echo=FALSE, Multivariate_Data_Plots,fig.width=9,fig.height=10}
 theme_set(theme_minimal(12))
@@ -608,9 +634,9 @@ df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges",
 ggpairs(df_cms_subset[sample.int(nrow(df_cms_subset),2000), ])
 ```
 
-### Final Plots and Summary 
-
-
+<p>The first graph produced explored the count and distribution of the data per 
+region.  We explore further the distribution of the data per region and 
+sub-region in the following box plot.</p>
 
 ```{r,fig.width=9,fig.height=9}
 ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
@@ -619,65 +645,88 @@ ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
+<p>In the region of the Northeast of the USA, we see that the Interquartile 
+Range is between ~18 for the 25% percentile and ~67 for the 75% percentile.</p>
 
+<p>In the region of the Midwest of the USA, we see that the Interquartile 
+Range is between ~18 for the 25% percentile and ~67 for the 75% percentile.</p>
 
+<p>In the region of the South of the USA, we see that the Interquartile 
+Range is between ~18 for the 25% percentile and ~50 for the 75% percentile.</p>
 
-```{r echo=FALSE, Bivariate_Plots_CR_CC-vs-MP,fig.width=9,fig.height=11}
-#We create a series of plots that showcase 
+<p>In the region of the West of the USA, we see that the Interquartile 
+Range is between ~15 for the 25% percentile and ~42 for the 75% percentile.</p>
+
+### Final Plots and Summary 
+
+<p>We will elaborate further in some of the graphs presented before.
+We will start by the scatter plot between Average Covered Charges and 
+Average Medicare Payments.</p>
+
+```{r echo=FALSE, Bivariate_Plots_Total_CC-vs-MP_modified,fig.width=9,fig.height=15}
+#We create a scatter plot between 
 #the average covered charges vs average medicare payments
-#This graph show an overall view of all regions
-p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, 
-               color=Census.Region),data= df_cms) + 
+ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments, 
+           color=Census.Region),data= df_cms) + 
   geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
-  ggtitle("Average Covered Charges vs Average Medicare Payments")+
-  ylim(0,50000)+
-  xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
-#This graph shows a scatter plot between 
-#average covered charges vs average medicare payments from the Midwest
-p2 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-                data=subset(df_cms, Census.Region == "MIDWEST")) + 
-  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "blue")+ 
-  ggtitle("Midwest Region: Average Covered Charges 
-          vs Average Medicare Payments")+
-  ylim(0,50000)+
-  xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
-#This graph shows a scatter plot between 
-#average covered charges vs average medicare payments from the Northeast
-p3 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-                data=subset(df_cms, Census.Region == "NORTHEAST")) + 
-  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "green")+ 
-  ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
-  ylim(0,50000)+
-  xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
-#This graph shows a scatter plot between 
-#average covered charges vs average medicare payments from the South
-p4 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-                data=subset(df_cms, Census.Region == "SOUTH")) + 
-  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "red")+ 
-  ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
-  ylim(0,50000)+
-  xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
-#This graph shows a scatter plot between 
-#average covered charges vs average medicare payments from the West
-p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
-                data=subset(df_cms, Census.Region == "WEST")) + 
-  geom_point(alpha = 1/5, position = position_jitter(h=0), color = "brown")+ 
-  ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
-  ylim(0,50000)+
-  xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
-
-#plotting the graphs
-p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
-grid.arrange(p1,p6, nrow=2)
-
+  ggtitle("Average Covered Charges vs Average Medicare Payments")+ 
+  facet_grid(Census.Region.Division ~ Census.Region)+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6))
 ```
 
-# Final Plots and Summary 
+<p>The immediate difference that we see is that for the northeast of the USA, 
+the two subregions show a different pattern. Division one New England shows a
+more narrow distribution with a more linear shape and positive correlation. 
+However for Division two Mid-Atlantic the positive correlation is further 
+dispersed and not so linear.</p>
+
+<p>The second difference that standouts are that there are differences between 
+subdivisions in the South of the USA. Division six and Division seven have 
+similarities in shape. However, Division Five has a more steep inclination.</p>
+
+<p>The other two regions have similar shapes and tendencies, in the case of 
+the west of the united state, there is an increase in data in Division nine 
+against Division eight.</p>
+
+<p>We will elaborate further in some of the graphs presented before. We will 
+start by the scatter plot between Total Discharges and 
+Average Total Payments.</p>
+
+```{r echo=FALSE, Bivariate_Plots_Total_TD-vs-TP_modified,fig.width=9,fig.height=15}
+#We create a scatter plot between 
+#the total discharges vs average total payments
+ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, 
+           color=Census.Region),data= df_cms) + 
+  geom_point(alpha = 1/5, position = position_jitter(h=0))+ 
+  ggtitle("Average Covered Charges vs Average Medicare Payments")+
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6))+ 
+  facet_grid(Census.Region.Division ~ Census.Region)
+```
+<p>There are no apparent differences, all graphs from all  Regions and Regions 
+divisions have similar shape and tendencies. However, there are some divisions 
+such as Division two, Division five and Division nine shows a higher number of 
+Average Total Payments vs Total Discharges than the other divisions in their 
+region.</p>
+
+<p>We will also elaborate further the box plot created that show the count of 
+entries per Region and Division. The following Box plot shows similar data but 
+showing the box plots per state within those regions and divisions.</p>
+
+```{r,fig.width=9,fig.height=50}
+ggplot(aes(x=Census.Region.Division, fill=Census.Region),
+       data=df_cms)+
+  geom_boxplot(aes(y= Total.Discharges))+
+  coord_cartesian(ylim = c(0, 90))+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ 
+  facet_grid(Provider.State ~ .)
+```
+
+<p>This graph shows that the state of Delaware has the highest 75% percentile 
+count of any state in the USA in this dataset.</p>
+
+# Reflection
 <p>The Dataset is one that shows a significant amount of data towards Medicare 
 payment information in hospitals throughout the USA.  It consists of 16 
 variables and 163065 entries. We explore the various relationships between 
@@ -689,11 +738,23 @@ the differences in payment from Medicare and Total payments made per procedure
 per hospitals in the same region as well as through states or regions in the 
 USA. </p>
 
-```{r}
-library(ggplot2)
-library(ggmap)
-cities <- c("ARNHEM","ATHENS","BAAR","CAMBRIDGESHIRE")
-print(cities[1])
-geocode("ARNHEM")
-```
+</p>The vastness of this dataset it is on itself a struggle, the analysis made 
+in here it is mainly superficial and many more aspects could be analysed 
+further. However, this analysis does give an overview picture of the 
+distribution of payments and discharges stored and how that is represented in 
+the different regions of the USA.<p>
+
+<p>Furthermore, another difficulty obtain was to allocate the data into regions, 
+divisions and so on. No python package is readily available that provides the 
+information required, therefore it needed to be done by hand and checked in a 
+multitude of sources, so the information was accurate.</p>
+
+<p>One question that could further be asked form this dataset is how the 
+different medical procedures are between payments(All the different types of 
+payment related variables in this dataset) and discharges among states, regions 
+and divisions. It is understood that different hospitals have a different 
+payment structure or charge structure per procedure, so a further analysis 
+could show this pattern and how much more significant such a difference is.</p>
+
+
 
