@@ -96,7 +96,7 @@ named "u_project_EDA-CMS_python3.ipynb", the code is presented in
 ### Data Summary
 
 <p>Firstly, we load the packages that we are going to use in this project.</p>
-```{r echo=FALSE} 
+```{r echo=FALSE, warning=FALSE, message=FALSE} 
 #The following code maanges the output of messages and warning when the code is run. The code also manages the figure size of an image created in the project.
 knitr::opts_chunk$set(fig.width=9,fig.height=5,fig.path='Figs/',
                       fig.align='center',tidy=TRUE,
@@ -310,8 +310,8 @@ ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments,
   ggtitle("Average Covered Charges vs Average Medicare Payments")
 ```
 
-<pAs seen on the graph, the majority of the data is under the x-value 
-250000 and y-value 50000. Due to this the second graph will have the limits 
+<p>As seen on the graph, the majority of the data is under the x-value 
+250000&#36; and y-value 50000&#36;. Due to this the second graph will have the limits 
 mentioned above and also 4 further graphs will be added; the entire data 
 frame data selectively gather under the four census regions of the USA, 
 Midwest, Northeast, South and West.</p>
@@ -420,10 +420,10 @@ ggplot(aes(x=Total.Discharges, y=Average.Total.Payments,
 ```
 
 <p>This graph shows that the majority of total discharges are fewer than 
-250 with an increase average total payments are mostly under 25000$.</p>
+250 with an increase average total payments are mostly under 25000&#36;.</p>
 
 <p>The next graph will plot the same graph as above but with limits of 
-x-value 500 and y-value 50000, as well as four separate graphs with the 
+x-value 500 and y-value 50000&#36;, as well as four separate graphs with the 
 data frame gather selectively from the regions of the USA.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_TD-vs-TP,fig.width=9,fig.height=11}
@@ -481,8 +481,8 @@ grid.arrange(p1,p6, nrow=2)
 <p>All graphs share a similar pattern than the one shared from the pattern 
 mention in the general and global graph. There are two distinct protrusions 
 of data reflecting an increase of total discharges with approximately an 
-average total payments of about 10000; with a constant increase of discharges, 
-similar to a horizontal line. The pattern is repeated about 15000  Average 
+average total payments of about 10000&#36;; with a constant increase of discharges, 
+similar to a horizontal line. The pattern is repeated about 15000&#36;  Average 
 Total Payments; it is less apparent in the West Region.</p>
 
 ##### TP-vs-MP:Analysis
@@ -531,7 +531,7 @@ ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments,
 
 <p>This graph shows a linear-like pattern. The majority of the entries are 
 within the liner pattern. Also, the majority of entries are within x-value 
-and y-value limits of 50000.</p>
+and y-value limits of 50000&#36;.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_TP-vs-MP,fig.width=14,fig.height=11}
 #We create a series of plots that showcase 
@@ -616,6 +616,7 @@ we will explore other analysis between these two variables.</p>
 
 
 
+
 #### Further Plots
 
 <p>The following plot reveals a summary generated produced in 
@@ -656,6 +657,11 @@ Range is between ~18 for the 25% percentile and ~50 for the 75% percentile.</p>
 
 <p>In the region of the West of the USA, we see that the Interquartile 
 Range is between ~15 for the 25% percentile and ~42 for the 75% percentile.</p>
+
+### Multivariable Section
+#### Multivariable Section: Plots
+
+
 
 ### Final Plots and Summary 
 
