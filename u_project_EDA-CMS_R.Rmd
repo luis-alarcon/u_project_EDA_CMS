@@ -275,6 +275,64 @@ by(df_cms$Average.Medicare.Payments, df_cms$Census.Region, summary)
 
 ## EDA: Furthe Data Exploration
 ### Bivariate Plots Section
+#### Bivariate Plots Section: Plots
+<p>In order to continue this analysis, we will proceed to see the relationship 
+between Total Discharges, Averaged Covered Charges (USD), Average Total Payments
+(USD) and Average Medicare Payments (USD).</p>
+
+```{r echo=FALSE, Multivariate_Data_Plots,fig.width=9,fig.height=10}
+theme_set(theme_minimal(12))
+
+# set the seed for reproducible results
+set.seed(2000)
+df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges",
+                           "Average.Total.Payments",
+                           "Average.Medicare.Payments")]
+ggpairs(df_cms_subset[sample.int(nrow(df_cms_subset),2000), ])
+```
+
+<p>From the graph, we can see that the relationship between Total Discharges 
+and Average Covered Charges is that the fewer discharges the more Average 
+Covered Charges. This trend is the same when we compare Total Discharges is 
+plotted alongside Average Total Payments and Average Medicare Payments.</p>
+
+<p>When a correlation test is performed between Total Discharges and the other 
+variables these are the results:</p>
+<ul>
+<li><b>Total Discharges vs Average Covered Charges(USD)</b>:</li> Corr: -0.025
+<li><b>Total Discharges vs Average Total Payments(USD)</b>:</li> Corr: 0.0151
+<li><b>Total DIscharges vs Average Medicare Payments(USD)</b>:</li> Corr:0.0121
+</ul>
+
+<p>The results indicate that there is no correlation between the number of 
+discharges and the payments made or received by patients or Medicare.</p>
+
+<p>The graph also shows the relationship between Average Covered Charges(USD) 
+and Average Total Payments(USD) and Average Medicare Payments(USD). The graph 
+shows almost a more linear positive relationship between Average Covered 
+Charges(USD) and Average Total Payments(USD) and Average Medicare Payments 
+(USD). </p>
+
+<p>The graph is supported by the data extracted in the correlation test between 
+the variables:</p>
+
+<li><b>Average Covered Charges(USD) vs Average Total Payments(USD)</b>:</li> 
+Corr: 0.772
+<li><b>Average Covered Charges(USD) vs Average Medicare Payments(USD)</b>:</li> 
+Corr: 0.764
+
+<p>The results indicate that there is a positive relationship between the 
+variable and due to the similarity in results it further supports the 
+similarity between the two relationships.</p>
+
+</p>The last relationship that could be explored from the graph is between 
+Average Total Payments(USD) and Average  Medicare Payments(USD). The graph 
+shows a very linear relationship between the two variables, and this is further 
+supported by the correlation test showing a Corr value of 0.992.</p>
+
+
+### Multivariable Section
+#### Multivariable Section: Plots
 
 <p>We will start by analysing the following group of variables together:</p>
 <ol>
@@ -293,9 +351,9 @@ MS-DRG; including partial coverage by the patient.</li>
 <li>Average Total Payments vs Average Medicare Payments.</li>
 </ol>
 
-#### Average Covered Charges vs Average Medicare Payments
+##### Average Covered Charges vs Average Medicare Payments
 
-##### CC-vs-MP:Plots
+###### CC-vs-MP:Plots
 
 <p>The first graph that is going to show the whole data from df_cms. 
 The whole data is graphed in this way in order to acquire the whole pattern of 
@@ -379,7 +437,7 @@ linear shape than the West region.</p>
 and y profile than other regions. However, the South region have a straight 
 line. It will be interesting to know why it was developed.</p>
 
-##### CC-vs-MP:Analysis
+###### CC-vs-MP:Analysis
 
 <p>We start the analysis by determining the Correlation between the 
 two variables. We will perform a Pearson test between the two variables 
@@ -403,9 +461,9 @@ and Average Medicare payments.</p>
 variables, and in a subsequent analysis with more detail and in-depth 
 data we will explore other analysis between these two variables</p>
 
-#### Total Discharges vs Average Total Payments
+##### Total Discharges vs Average Total Payments
 
-##### TD-vs-TP:Plots
+###### TD-vs-TP:Plots
 
 <p>This first graph is going to deliver an overall picture of the relation 
 between the two data columns; including data patterns.</p>
@@ -485,7 +543,7 @@ average total payments of about 10000&#36;; with a constant increase of discharg
 similar to a horizontal line. The pattern is repeated about 15000&#36;  Average 
 Total Payments; it is less apparent in the West Region.</p>
 
-##### TP-vs-MP:Analysis
+###### TP-vs-MP:Analysis
 
 <p>We start the analysis by determining the Correlation between the two 
 variables. We will perform a Pearson test between the two variables without 
@@ -513,9 +571,9 @@ variables, and in a subsequent analysis with more detail and in-depth data,
 we will explore other analysis between these two variables.</p>
 
 
-#### Average Total Payments vs Average Medicare Payments
+##### Average Total Payments vs Average Medicare Payments
 
-##### TP-vs-MP:Plots
+###### TP-vs-MP:Plots
 
 <p>This first graph is going to deliver an overall picture of the relation 
 between the two data columns; including data patterns.</p>
@@ -589,7 +647,7 @@ grid.arrange(p1,p6, nrow=2)
 <p>All graphs show the same pattern. There are mild differences in the width. 
 Further analysis could reveal more about this pattern.</p>
 
-##### TP-vs-MP:Analysis
+###### TP-vs-MP:Analysis
 
 <p>We start the analysis by determining the Correlation between the two 
 variables. We will perform a Pearson test between the two variables without 
@@ -617,27 +675,8 @@ we will explore other analysis between these two variables.</p>
 
 
 
-#### Further Plots
 
-<p>The following plot reveals a summary generated produced in 
-one summarised graph. The graph the relationships between Total Discharges, 
-Average Covered Changes, Average Total Payments and Average Medicare Payments, 
-including line graphs and scatter plots showing such the relationship.</p>
 
-```{r echo=FALSE, Multivariate_Data_Plots,fig.width=9,fig.height=10}
-theme_set(theme_minimal(12))
-
-# set the seed for reproducible results
-set.seed(2000)
-df_cms_subset <- df_cms[,c("Total.Discharges","Average.Covered.Charges",
-                           "Average.Total.Payments",
-                           "Average.Medicare.Payments")]
-ggpairs(df_cms_subset[sample.int(nrow(df_cms_subset),2000), ])
-```
-
-<p>The first graph produced explored the count and distribution of the data per 
-region.  We explore further the distribution of the data per region and 
-sub-region in the following box plot.</p>
 
 ```{r,fig.width=9,fig.height=9}
 ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
@@ -657,10 +696,6 @@ Range is between ~18 for the 25% percentile and ~50 for the 75% percentile.</p>
 
 <p>In the region of the West of the USA, we see that the Interquartile 
 Range is between ~15 for the 25% percentile and ~42 for the 75% percentile.</p>
-
-### Multivariable Section
-#### Multivariable Section: Plots
-
 
 
 ### Final Plots and Summary 
