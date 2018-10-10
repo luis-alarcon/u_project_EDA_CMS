@@ -212,7 +212,10 @@ p5 = ggplot(aes(x=Census.Region, fill = Census.Region.Division), data= df_cms,
                                           "SOUTH","WEST")) +
   xlab(NULL)
 
-grid.arrange(p1, p2, p3, p4, p5, ncol=2)
+lay <- rbind(c(1,1),
+             c(2,3),
+             c(4,5))
+grid.arrange(p1, p2, p3, p4, p5, layout_matrix = lay)
 ```
 
 ### Univariate Analysis Section
@@ -389,7 +392,8 @@ p1 =ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments,
   ggtitle("Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the Midwest
 p2 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
@@ -399,7 +403,8 @@ p2 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
           vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the Northeast
 p3 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
@@ -408,7 +413,8 @@ p3 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
   ggtitle("Northeast: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the South
 p4 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
@@ -417,7 +423,8 @@ p4 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
   ggtitle("South: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #average covered charges vs average medicare payments from the West
 p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
@@ -426,12 +433,14 @@ p5 = ggplot(aes(x=Average.Covered.Charges, y=Average.Medicare.Payments),
   ggtitle("West: Average Covered Charges vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,250000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 
 #plotting the graphs
-p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
-grid.arrange(p1,p6, nrow=2)
-
+lay <- rbind(c(1,1),
+             c(2,3),
+             c(4,5))
+grid.arrange(p1, p2, p3, p4, p5, layout_matrix = lay)
 ```
 
 <p>As we can see from the graph West and Midwest regions, have a similar 
@@ -490,7 +499,8 @@ x-value 500 and y-value 50000&#36;, as well as four separate graphs with the
 data frame gather selectively from the regions of the USA.</p>
 
 ```{r echo=FALSE, Bivariate_Plots_CR_TD-vs-TP,fig.width=9,fig.height=11}
-#We create a series of plots that showcase the total discharges vs average total payments
+#We create a series of plots that showcase the total discharges vs 
+#average total payments
 #This graph show an overall view of all regions
 p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments, 
                color=Census.Region),data= df_cms) + 
@@ -498,7 +508,8 @@ p1 =ggplot(aes(x=Total.Discharges, y=Average.Total.Payments,
   ggtitle("Total Discharges vs Average Total Payments")+
   ylim(0,50000)+
   xlim(0,500)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the Midwest
 p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -507,7 +518,8 @@ p2 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   ggtitle("Midwest Region: Total Discharges vs Average Total Payments")+
   ylim(0,50000)+
   xlim(0,500)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the Northeast
 p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -516,7 +528,8 @@ p3 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   ggtitle("Northeast: Total Discharges vs Average Total Payments")+
   ylim(0,50000)+
   xlim(0,500)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the South
 p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -525,7 +538,8 @@ p4 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   ggtitle("South: Total Discharges vs Average Total Payments")+
   ylim(0,50000)+
   xlim(0,500)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #total discharges vs average total payments from the West
 p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
@@ -534,19 +548,22 @@ p5 = ggplot(aes(x=Total.Discharges, y=Average.Total.Payments),
   ggtitle("West: Total Discharges vs Average Total Payments")+
   ylim(0,50000)+
   xlim(0,500)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 
 #plotting the graphs
-p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
-grid.arrange(p1,p6, nrow=2)
+lay <- rbind(c(1,1),
+             c(2,3),
+             c(4,5))
+grid.arrange(p1, p2, p3, p4, p5, layout_matrix = lay)
 ```
 
 <p>All graphs share a similar pattern than the one shared from the pattern 
 mention in the general and global graph. There are two distinct protrusions 
 of data reflecting an increase of total discharges with approximately an 
-average total payments of about 10000&#36;; with a constant increase of discharges, 
-similar to a horizontal line. The pattern is repeated about 15000&#36;  Average 
-Total Payments; it is less apparent in the West Region.</p>
+average total payments of about 10000&#36;; with a constant increase of 
+discharges, similar to a horizontal line. The pattern is repeated about 
+15000&#36;  Average Total Payments; it is less apparent in the West Region.</p>
 
 ###### TP-vs-MP:Analysis
 
@@ -596,7 +613,7 @@ ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments,
 within the liner pattern. Also, the majority of entries are within x-value 
 and y-value limits of 50000&#36;.</p>
 
-```{r echo=FALSE, Bivariate_Plots_CR_TP-vs-MP,fig.width=14,fig.height=11}
+```{r echo=FALSE, Bivariate_Plots_CR_TP-vs-MP,fig.width=9,fig.height=11}
 #We create a series of plots that showcase 
 #the Average Total Payments and Average Medicare Payments
 #This graph show an overall view of all regions
@@ -606,7 +623,8 @@ p1 =ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments,
   ggtitle("Average Total Payments vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the Midwest
 p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -615,7 +633,8 @@ p2 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   ggtitle("Midwest Region: Average Total Payments vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the Northeast
 p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -624,7 +643,8 @@ p3 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   ggtitle("Northeast: Average Total Payments vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the South
 p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -633,7 +653,8 @@ p4 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   ggtitle("South: Average Total Payments vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 #This graph shows a scatter plot between 
 #Average Total Payments and Average Medicare Payments from the West
 p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
@@ -642,11 +663,14 @@ p5 = ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments),
   ggtitle("West: Average Total Payments vs Average Medicare Payments")+
   ylim(0,50000)+
   xlim(0,50000)+
-  theme(text = element_text(size=9),plot.title = element_text(size=8), axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
+  theme(text = element_text(size=9),plot.title = element_text(size=8), 
+        axis.text=element_text(size=6),plot.margin=unit(c(1,1,1,1), "cm")) 
 
 #plotting the graphs
-p6 = grid.arrange(p2, p3, p4, p5, ncol=2)
-grid.arrange(p1,p6, nrow=2)
+lay <- rbind(c(1,1),
+             c(2,3),
+             c(4,5))
+grid.arrange(p1, p2, p3, p4, p5, layout_matrix = lay)
 ```
 
 <p>All graphs show the same pattern. There are mild differences in the width. 
@@ -683,7 +707,7 @@ we will explore other analysis between these two variables.</p>
 
 
 
-```{r,fig.width=9,fig.height=9}
+```{r echo=FALSE, total_discharges_vs_census_region_division,fig.width=9,fig.height=9}
 ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
   geom_boxplot(aes(y= Total.Discharges))+
   coord_cartesian(ylim = c(0, 90))+
@@ -743,7 +767,7 @@ ggplot(aes(x=Average.Total.Payments, y=Average.Medicare.Payments,
 ```
 
 
-```{r,fig.width=7,fig.height=7}
+```{r echo=FALSE, total_discharges_vs_census_region_division_final,fig.width=7,fig.height=7}
 ggplot(aes(x=Census.Region.Division, fill=Census.Region),data= df_cms)+
   geom_boxplot(aes(y= Total.Discharges))+
   coord_cartesian(ylim = c(0, 90))+
