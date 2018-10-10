@@ -1,6 +1,6 @@
 ---
 title: "Consumer Complaint Database"
-subtitle: "An overview of consumer complaint behavior and company responses"
+subtitle: "An overview of Medicare payments and discharges in the USA"
 author: "Luis Alarcon"
 date: "October 5, 2018"
 output: 
@@ -9,13 +9,6 @@ output:
     toc_depth: 3
     toc_float: true
 ---
-
-Consumer Complaint Database
-========================================================
-An overview of consumer complaint behavior and company responses
------------------------------------------------------------------
-By Luis Alarcon
-----------------
 
 # Disclaimer
 
