@@ -102,7 +102,8 @@ named "u_project_EDA-CMS_python3.ipynb", the code is presented in
 
 <p>Firstly, we load the packages that we are going to use in this project.</p>
 ```{r echo=FALSE, warning=FALSE, message=FALSE} 
-#The following code maanges the output of messages and warning when the code is run. The code also manages the figure size of an image created in the project.
+#The following code manages the output of messages and warning when the code is 
+#run. The code also manages the figure size of an image created in the project.
 knitr::opts_chunk$set(fig.width=9,fig.height=5,fig.path='Figs/',
                       fig.align='center',tidy=TRUE,
                       echo=FALSE,warning=FALSE,message=FALSE)
